@@ -15,12 +15,14 @@
       --gold: #9B7D3A;
       --gold-light: #C4A25A;
       --gold-pale: #EDE0C4;
-      --forest: #2D4A35;
+      --plum: #5C4270;
+      --plum-tag: #D5B8E8;
+      --plum-tag-line: rgba(213,184,232,0.25);
+      --plum-quote: #F0E4F8;
       --rule: rgba(155,125,58,0.28);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -35,12 +37,11 @@
       background: var(--parchment);
       max-width: 780px;
       margin: 0 auto;
-      padding-bottom: 80px;
+      padding-bottom: 0;
       box-shadow: 0 0 80px rgba(0,0,0,0.5);
-      position: relative;
     }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       position: relative;
       height: 480px;
@@ -53,492 +54,204 @@
     }
 
     .hero img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
     }
 
     .hero-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(to bottom,
         rgba(20,14,6,0.3) 0%,
         rgba(20,14,6,0.5) 55%,
         rgba(44,36,24,0.88) 100%);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 40px;
-    }
+    .hero-content { position: relative; z-index: 2; padding: 0 40px; }
 
     .hero-eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 0.32em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      margin-bottom: 18px;
+      font-size: 11px; letter-spacing: 0.32em;
+      color: var(--gold-light); text-transform: uppercase; margin-bottom: 18px;
     }
 
     .hero h1 {
       font-family: 'Cinzel', serif;
-      font-size: 42px;
-      font-weight: 500;
-      color: #F5EDD8;
-      line-height: 1.2;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
+      font-size: 42px; font-weight: 500;
+      color: #F5EDD8; line-height: 1.2;
+      letter-spacing: 0.04em; margin-bottom: 24px;
     }
 
-    .hero-ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
+    .hero-ornament { display: flex; align-items: center; justify-content: center; gap: 16px; }
     .ho-line { width: 80px; height: 1px; background: var(--gold-light); opacity: 0.55; }
+    .ho-diamond { width: 8px; height: 8px; background: var(--gold-light); transform: rotate(45deg); opacity: 0.75; }
 
-    .ho-diamond {
-      width: 8px; height: 8px;
-      background: var(--gold-light);
-      transform: rotate(45deg);
-      opacity: 0.75;
-    }
-
-    /* ── TOC ── */
-    .toc {
-      padding: 32px 52px;
-      border-bottom: 1px solid var(--rule);
-      background: rgba(155,125,58,0.04);
-    }
+    /* TOC */
+    .toc { padding: 32px 52px; border-bottom: 1px solid var(--rule); background: rgba(155,125,58,0.04); }
 
     .toc-label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
+      font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
     }
 
-    .toc-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 40px;
-    }
-
-    .toc-list li {
-      font-size: 14px;
-      color: var(--ink-muted);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Cinzel', serif;
-      letter-spacing: 0.04em;
-    }
+    .toc-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; }
 
     .toc-list a {
-      color: inherit;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: color 0.2s;
+      font-size: 14px; color: var(--ink-muted);
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Cinzel', serif; letter-spacing: 0.04em;
+      text-decoration: none; transition: color 0.2s;
     }
 
     .toc-list a:hover { color: var(--gold); }
     .toc-num { font-size: 11px; color: var(--gold-light); min-width: 20px; }
 
-    /* ── PROPHECY IMAGE ROW ── */
-    .img-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      height: 180px;
-    }
-
-    .img-cell {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .img-cell img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
+    /* IMAGE ROW */
+    .img-row { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 180px; }
+    .img-cell { position: relative; overflow: hidden; }
+    .img-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .img-cell:hover img { transform: scale(1.06); }
 
     .img-cell-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(20,14,6,0.75));
-      color: var(--gold-pale);
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 22px 8px 9px;
+      color: var(--gold-pale); font-family: 'Cinzel', serif;
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      text-align: center; padding: 22px 8px 9px;
     }
 
-    /* ── SECTION ── */
-    .section {
-      padding: 48px 52px 0;
-    }
+    /* SECTION */
+    .section { padding: 48px 52px 0; }
 
-    .sec-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .sec-head::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
+    .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+    .sec-head::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
 
     .sec-head h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      white-space: nowrap;
+      font-family: 'Cinzel', serif; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); white-space: nowrap;
     }
 
-    .sec-diamond {
-      width: 6px; height: 6px;
-      background: var(--gold);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-      opacity: 0.65;
-    }
+    .sec-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; opacity: 0.65; }
 
-    .section p {
-      font-size: 18px;
-      line-height: 1.9;
-      color: var(--ink);
-      margin-bottom: 1.1em;
-    }
-
+    .section p { font-size: 18px; line-height: 1.9; color: var(--ink); margin-bottom: 1.1em; }
     .section p:last-child { margin-bottom: 0; }
 
-    /* ── FULL-BLEED IMAGE BREAK ── */
-    .img-break {
-      position: relative;
-      height: 260px;
-      margin-top: 40px;
-      overflow: hidden;
-    }
-
-    .img-break img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-    }
+    /* FULL BLEED IMAGE */
+    .img-break { position: relative; height: 260px; margin-top: 40px; overflow: hidden; }
+    .img-break img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
 
     .img-break-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(20,14,6,0.72));
       padding: 40px 52px 20px;
-      font-style: italic;
-      font-size: 16px;
-      color: var(--gold-pale);
-      line-height: 1.7;
+      font-style: italic; font-size: 16px;
+      color: var(--gold-pale); line-height: 1.7;
     }
 
-    /* ── SIDE IMAGE + QUOTE ── */
-    .side-img-block {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 0;
-      margin: 28px 0;
-    }
-
-    .side-img-block img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-    }
+    /* SIDE IMAGE + QUOTE */
+    .side-img-block { display: grid; grid-template-columns: 210px 1fr; gap: 0; margin: 28px 0; }
+    .side-img-block img { width: 100%; height: 210px; object-fit: cover; }
 
     .side-img-text {
       padding: 22px 26px;
       background: rgba(45,74,53,0.07);
-      border-left: 2px solid var(--forest);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      border-left: 2px solid var(--gold);
+      display: flex; flex-direction: column; justify-content: center;
     }
 
     .side-img-source {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
+      font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
     }
 
-    .side-img-text p {
-      font-style: italic;
-      font-size: 16.5px;
-      color: var(--ink-muted);
-      line-height: 1.9;
-      margin-bottom: 0;
-    }
+    .side-img-text p { font-style: italic; font-size: 16.5px; color: var(--ink-muted); line-height: 1.9; margin-bottom: 0; }
 
-    /* ── SCRIPTURE DARK PANEL ── */
-    .scripture {
-      margin: 30px 0;
-      padding: 28px 34px;
-      background: var(--forest);
-      color: var(--gold-pale);
-    }
+    /* SCRIPTURE — SOFT LAVENDER PLUM */
+    .scripture { margin: 30px 0; padding: 28px 34px; background: var(--plum); }
 
     .scripture-label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--plum-tag); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
     }
 
-    .scripture-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(196,162,90,0.25);
-    }
+    .scripture-label::after { content: ''; flex: 1; height: 1px; background: var(--plum-tag-line); }
 
-    .scripture p {
-      color: var(--gold-pale);
-      font-style: italic;
-      font-size: 17px;
-      line-height: 1.95;
-      margin-bottom: 0.8em;
-    }
-
+    .scripture p { color: var(--plum-quote); font-style: italic; font-size: 17px; line-height: 1.95; margin-bottom: 0.8em; }
     .scripture p:last-child { margin-bottom: 0; }
 
-    /* ── LIFESTYLE GRID ── */
-    .lifestyle-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 28px 0;
-    }
-
-    .ls-card {
-      position: relative;
-      overflow: hidden;
-      height: 180px;
-    }
-
-    .ls-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
+    /* LIFESTYLE GRID */
+    .lifestyle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
+    .ls-card { position: relative; overflow: hidden; height: 180px; }
+    .ls-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .ls-card:hover img { transform: scale(1.06); }
 
     .ls-card-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(transparent 30%, rgba(20,14,6,0.72) 100%);
-      display: flex;
-      align-items: flex-end;
-      padding: 16px 18px;
+      display: flex; align-items: flex-end; padding: 16px 18px;
     }
 
-    .ls-card-title {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-pale);
-    }
+    .ls-card-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); }
 
-    /* ── SYMBOL FLOAT ── */
-    .symbol-float {
-      float: right;
-      margin: 0 0 20px 28px;
-      text-align: center;
-      width: 130px;
-    }
+    /* SYMBOL FLOAT */
+    .symbol-float { float: right; margin: 0 0 20px 28px; text-align: center; width: 130px; }
 
     .symbol-float img {
-      width: 130px;
-      height: 130px;
-      object-fit: contain;
+      width: 130px; height: 130px; object-fit: contain;
       border: 1px solid var(--rule);
       background: rgba(155,125,58,0.06);
-      padding: 12px;
-      display: block;
+      padding: 12px; display: block;
     }
 
-    .symbol-caption {
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 7px;
-      display: block;
-    }
-
+    .symbol-caption { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 7px; display: block; }
     .clearfix::after { content: ''; display: table; clear: both; }
 
-    /* ── LINKS SECTION ── */
-    .links-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-      margin-top: 24px;
-    }
+    /* INFO GRID */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
 
-    .link-item {
-      font-size: 13px;
-      font-family: 'Cinzel', serif;
-      color: var(--gold);
-      text-decoration: none;
-      padding: 11px 15px;
-      border: 1px solid var(--rule);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      letter-spacing: 0.05em;
-      transition: background 0.2s, color 0.2s;
-      line-height: 1.4;
-    }
-
-    .link-item:hover {
-      background: rgba(155,125,58,0.09);
-      color: var(--forest);
-    }
-
-    .link-dot {
-      width: 5px; height: 5px;
-      background: var(--gold);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 52px 52px 0;
-    }
-
-    .divider-line { flex: 1; height: 1px; background: var(--rule); }
-
-    .divider-text {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.26em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-    }
-
-    /* ── VISITOR / OWNERSHIP BLOCK ── */
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin: 24px 0;
-    }
-
-    .info-card {
-      padding: 22px 22px;
-      border: 1px solid var(--rule);
-      background: rgba(155,125,58,0.04);
-    }
+    .info-card { padding: 22px; border: 1px solid var(--rule); background: rgba(155,125,58,0.04); }
 
     .info-card-title {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--rule);
+      font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--rule);
     }
 
-    .info-card p {
-      font-size: 16px !important;
-      color: var(--ink-muted) !important;
-      line-height: 1.8 !important;
+    .info-card p { font-size: 16px !important; color: var(--ink-muted) !important; line-height: 1.8 !important; }
+
+    /* LINKS */
+    .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 24px; }
+
+    .link-item {
+      font-size: 13px; font-family: 'Cinzel', serif; color: var(--gold);
+      text-decoration: none; padding: 11px 15px;
+      border: 1px solid var(--rule);
+      display: flex; align-items: center; gap: 10px;
+      letter-spacing: 0.05em; transition: background 0.2s, color 0.2s; line-height: 1.4;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      margin-top: 60px;
-      padding: 28px 52px;
-      background: var(--forest);
-      text-align: center;
-    }
+    .link-item:hover { background: rgba(92,66,112,0.09); color: var(--plum); }
+    .link-dot { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
 
-    .footer-ornament {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
+    /* FOOTER */
+    footer { padding: 32px 52px 40px; background: var(--plum); text-align: center; }
 
-    .footer-line { width: 80px; height: 1px; background: rgba(196,162,90,0.3); }
+    .footer-ornament { display: flex; align-items: center; gap: 16px; justify-content: center; margin-bottom: 14px; }
+    .footer-line { width: 80px; height: 1px; background: rgba(213,184,232,0.35); }
 
-    .footer-title {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-    }
+    .footer-title { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.28em; color: var(--plum-tag); text-transform: uppercase; }
+    footer p { font-size: 14px; color: rgba(240,228,248,0.55); font-style: italic; margin-top: 8px; }
 
-    footer p {
-      font-size: 13px;
-      color: rgba(237,224,196,0.5);
-      font-style: italic;
-      margin-top: 8px;
-    }
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── ANIMATIONS ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 600px) {
       .hero h1 { font-size: 28px; }
       .toc-list { grid-template-columns: 1fr; }
@@ -556,7 +269,6 @@
   </style>
 </head>
 <body>
-
 <div class="page">
 
   <!-- HERO -->
@@ -574,7 +286,7 @@
     </div>
   </div>
 
-  <!-- TABLE OF CONTENTS -->
+  <!-- TOC -->
   <nav class="toc">
     <div class="toc-label">Contents</div>
     <ul class="toc-list">
@@ -589,7 +301,7 @@
     </ul>
   </nav>
 
-  <!-- PROPHECY IMAGE STRIP -->
+  <!-- IMAGE STRIP -->
   <div class="img-row">
     <div class="img-cell">
       <img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=500&q=80" alt="Sacred landscape">
@@ -605,18 +317,15 @@
     </div>
   </div>
 
-  <!-- PROPHECY SECTION -->
+  <!-- PROPHECY -->
   <section id="prophecy" class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>The Prophecies</h2>
-    </div>
+    <div class="sec-head"><div class="sec-diamond"></div><h2>The Prophecies</h2></div>
 
     <div class="side-img-block">
       <img src="https://images.unsplash.com/photo-1502786129293-79981df4e689?w=500&q=80" alt="Ancient sacred landscape">
       <div class="side-img-text">
         <div class="side-img-source">Cree &amp; Hopi &nbsp;·&nbsp; Native American</div>
-        <p>"There will come a day of awakening when the peoples of all tribes will form a new world in recognition of the Great Spirit and love all mankind as their brothers, regardless of color, race or religion. Then rivers will again run clear, the forests be abundant and beautiful, the animals and birds will be replenished."</p>
+        <p>"There would come a time, when the fish will die in the streams, the birds will fall from the air, the waters will be blackened, and the trees will no longer be, when the keepers of the rituals and customs will be needed to restore us to health. There will come a day of awakening when the peoples of all tribes will form a new world in recognition of the Great Spirit and love all mankind as their brothers, regardless of color, race or religion. Then rivers will again run clear, the forests be abundant and beautiful, the animals and birds will be replenished, children will run free and the needy will be cared for. We shall see how much we owe to those that have kept the stories and rituals alive."</p>
       </div>
     </div>
 
@@ -624,32 +333,28 @@
       <img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?w=500&q=80" alt="Misty mountain sunrise">
       <div class="side-img-text">
         <div class="side-img-source">Peter Deunov &nbsp;·&nbsp; 1864–1944</div>
-        <p>"The New Era will build itself around the idea of Fraternity and the earth will become a blessed place. There will be no more conflicts of personal interests; the single aspiration of each one will be to conform to Love. Men will form a family, as a large body, and each people will represent an organ in this body."</p>
+        <p>"The New Era will build itself around the idea of Fraternity and the earth will become a blessed place. There will be no more conflicts of personal interests; the single aspiration of each one will be to conform to Love. Men will form a family, as a large body, and each people will represent an organ in this body. They will nourish themselves exclusively from products of the vegetal realm. The ardent wave emanating from On High will manifest Love in a perfect manner. It is the end of an epoch; a new order will substitute the old, an order in which Love will reign on earth."</p>
       </div>
     </div>
 
     <div class="scripture">
       <div class="scripture-label">The I'hin Prophecy &nbsp;·&nbsp; Oahspe</div>
-      <p>"When the earth is circumscribed around about with such as choose Me, I will come hither with a great awakening light to the souls of men and lay the foundation for My kingdoms. On this land will I raise up a people who shall be the fulfilling of that which the I'hins profess."</p>
-      <p>"Thou shalt look upon the mountains and strong standing rocks, and the thought of thy soul shall pierce them, and the impression thereof shall be as a written book before the races of men. They shall come forth in tens of thousands, putting away all Gods and Lords and ancient tyranny, for My sake."</p>
+      <p>"When the earth is circumscribed around about with such as choose Me (the Great Spirit) I will come hither with a great awakening light to the souls of men and lay the foundation for My kingdoms. On this land [America] will I raise up a people who shall be the fulfilling of that which the I'hins [lost prophetic race remembered by indigenous cultures] profess."</p>
+      <p>"Thou [to an Etherean God] shalt look upon the mountains and strong standing rocks, and the thought of thy soul shall pierce them, and the impression thereof shall be as a written book before the races of men in that day [the so called 'New Age' or Kosmon]. Neither shall they know the cause, but they shall come forth in tens of thousands, putting away all Gods and Lords and ancient tyranny, for My sake. Thy soul shall be My talisman, deep engraven in the land and water and mountains. On this land alone shall not any Lord nor God be established by the sword, for it is My land, which I planned for the deliverance of the nations of the earth."</p>
     </div>
   </section>
 
   <!-- KOSMON IMAGE BREAK -->
   <div class="img-break fade-in">
-    <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1400&q=85" alt="Aerial view of earth, rivers and fields">
-    <div class="img-break-caption">"The new technical capability has given us god-like powers to see the coming and going of what we make reality — and how the unity and wellbeing of humanity rests upon the love and peace of a universal Person, our inner voice and teacher."</div>
+    <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1400&q=85" alt="Aerial view of earth">
+    <div class="img-break-caption"></div>
   </div>
 
-  <!-- KOSMON SECTION -->
+  <!-- KOSMON -->
   <section id="kosmon" class="section fade-in" style="padding-top:40px;">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Kosmon &nbsp;·&nbsp; Man's Climax of Development</h2>
-    </div>
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Kosmon &nbsp;·&nbsp; Man's Climax of Development</h2></div>
     <p>Being long circumscribed, the world has now attained instantaneous digital global communication, and is rapidly piecing together information pouring in from its four quarters — through scholars, mythologists, historians, scientists, archaeologists, idealists, and mystics — enabling the re-emergence of ancient wisdom, religious texts and forgotten rites, along with contemporary traditions, to guide us in formulating a new planetary culture.</p>
     <p>The new technical capability has extended the knowledge and perception of our environment and given us god-like powers to see the coming and going of what we make 'reality', and how the unity and wellbeing of humanity rests upon the love and peace of a universal Person, our inner voice and teacher emerging from deep within us.</p>
-
     <div class="scripture">
       <div class="scripture-label">The Father's Kingdom &nbsp;·&nbsp; Oahspe, 1881</div>
       <p>"I demand of thee, that you have no favourite doctrine above thy neighbour; and that you are servant to no God, nor Lord, nor Saviour, nor church, unacceptable to any man in all the world. But that you serve the Great Spirit with all your wisdom and strength, by doing good unto thy fellow-men with all thy might."</p>
@@ -657,22 +362,17 @@
     </div>
   </section>
 
-  <!-- OAHSPE SECTION -->
+  <!-- OAHSPE -->
   <section id="oahspe" class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Oahspe</h2>
-    </div>
-
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Oahspe</h2></div>
     <div class="clearfix">
       <div class="symbol-float">
-        <img src="https://rrtech77.github.io/Vision-For-Heaven-on-Earth/jehovihSymbolS.jpg" alt="Jehovih Symbol — leaf on a cross on a circle">
+        <img src="https://rrtech77.github.io/Vision-For-Heaven-on-Earth/jehovihSymbolS.jpg" alt="Jehovih Symbol">
         <span class="symbol-caption">Jehovih Symbol</span>
       </div>
       <p>A book channelled in 1881 in the USA, Oahspe [meaning sky (o), earth (ah), and spirit (spe) in the first language spoken] gives the name of the creator as Jehovih. It covers the mysteries of life, creation, time cycles, ancient civilisations, prophets and prophecy, origin of religion, race and language in all continents, life after death, the unseen worlds and their inhabitants, and the founding of heaven on earth.</p>
       <p>The sign of Eloih in the Se'moin tablet of Oahspe represents the underlying Person, the All Soul: <em>"It is the circumference of all; it extends from left to right, and from below upward. It holds the emblem of life."</em></p>
     </div>
-
     <div class="scripture">
       <div class="scripture-label">On Creation &nbsp;·&nbsp; Oahspe</div>
       <p>"All was. All is. All ever shall be. The All spoke and motion was, is and ever shall be; and, being positive, was called He and Him."</p>
@@ -681,15 +381,11 @@
     </div>
   </section>
 
-  <!-- GOD SECTION -->
+  <!-- WHO IS GOD -->
   <section id="god" class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Who Is God?</h2>
-    </div>
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Who Is God?</h2></div>
     <p>Oahspe speaks of mortals, angels, gods, goddesses and Jehovih. Spirits of mortals that have died are termed angels. Gods are angels that are raised in wisdom and power. The true God of heaven and earth, known as God, son of Jehovih, is anointed and crowned by etherians and describes himself as our elder brother of tens of thousands of years' experience.</p>
     <p>The creator of all these is Jehovih. Only He is unborn, sum and substance of All. When you worship God, consider whether you mean an angel in human form on a throne in heaven, or an inconceivable, infinite person, soul of All and expression of all things, abiding in every blade of grass and leaf.</p>
-
     <div class="scripture">
       <div class="scripture-label">Oahspe</div>
       <p>"My inspiration upon the bird causes it to sing; by My Presence I teach it to build its nest. By My Presence I colour one rose red, and another white. Proof of My Person is in the harmony of the whole, and of every one being a person of itself, perfect in its order."</p>
@@ -698,43 +394,29 @@
     </div>
   </section>
 
-  <!-- LIFESTYLE SECTION -->
+  <!-- LIFESTYLE -->
   <section id="lifestyle" class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Lifestyle &amp; Community</h2>
-    </div>
-
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Lifestyle &amp; Community</h2></div>
     <div class="lifestyle-grid">
       <div class="ls-card">
-        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80" alt="Organic garden with vegetables">
-        <div class="ls-card-overlay">
-          <div class="ls-card-title">Organic Gardens</div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80" alt="Organic garden">
+        <div class="ls-card-overlay"><div class="ls-card-title">Organic Gardens</div></div>
       </div>
       <div class="ls-card">
         <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80" alt="Community gathering">
-        <div class="ls-card-overlay">
-          <div class="ls-card-title">Brotherhood &amp; Care</div>
-        </div>
+        <div class="ls-card-overlay"><div class="ls-card-title">Brotherhood &amp; Care</div></div>
       </div>
       <div class="ls-card">
-        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&q=80" alt="Sacred practice and movement">
-        <div class="ls-card-overlay">
-          <div class="ls-card-title">Sacred Practice</div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&q=80" alt="Sacred practice">
+        <div class="ls-card-overlay"><div class="ls-card-title">Sacred Practice</div></div>
       </div>
       <div class="ls-card">
-        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80" alt="Sunrise over peaceful valley">
-        <div class="ls-card-overlay">
-          <div class="ls-card-title">Daily Worship</div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80" alt="Sunrise worship">
+        <div class="ls-card-overlay"><div class="ls-card-title">Daily Worship</div></div>
       </div>
     </div>
-
     <p>It remains to be seen how change will find a balance between simple and sophisticated, tribal and technological lifestyle, and to what extent we may adapt previous traditions, ethics and social relationships. In this age of liberty we are to take responsibility for the course we choose.</p>
     <p>Tasks will be leisurely performed and orderly, each putting their talents to good use according to need and capability — working in concert on our gardens and structures to the sound of music and chanting. We are developing a syncretism of Zoroastrian, Native American, Shinto and Jewish rites and ceremonies, Confucian, Hindu and Buddhist spiritual practices and wisdom, and Christian morality.</p>
-
     <div class="scripture">
       <div class="scripture-label">Community Wisdom &nbsp;·&nbsp; Oahspe</div>
       <p>"One person has joy in sacrifice by clapping his hands and dancing; another, in poetry; another, in singing; another, in silent prayers. And yet, one has no preference over another in sight of Him who created them. Consider, that you provide a time and place in the community for all of these in their own way, directing them holily."</p>
@@ -747,13 +429,9 @@
     <div class="img-break-caption">"Though worlds come into being and go out of being, yet He remains — the Key Note of Harmony, without whom a man is as a ship without a rudder."</div>
   </div>
 
-  <!-- JEHOVIH SECTION -->
+  <!-- JEHOVIH -->
   <section id="jehovih" class="section fade-in" style="padding-top:42px;">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Who Is Jehovih</h2>
-    </div>
-
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Who Is Jehovih</h2></div>
     <div class="clearfix">
       <div class="symbol-float">
         <img src="https://rrtech77.github.io/Vision-For-Heaven-on-Earth/triangleFs.jpg" alt="Triangle — The Three in One">
@@ -763,7 +441,6 @@
       <p>As is the triangle, He is three things in one: first, the ghost, the soul, which is incomprehensible; second, the beast, the figure, the person; and third, the expression, to receive and to impart. These three comprise all things; and all things are but one.</p>
       <p>To become attuned — first with oneself, then with one's immediate surroundings, then to Spirit and Jehovih — so that one moves, acts, and comprehends harmoniously, is to become one with the Father, who is the Key Note of Harmony. Without Him, a man is as a ship without a rudder.</p>
     </div>
-
     <div class="scripture">
       <div class="scripture-label">Oahspe</div>
       <p>"It is a talent to hear My Voice. I bestowed it upon all the living; it is seated in the soul. By cultivation, it grows and becomes mighty above all other talents. By its culture, man attains to all possibilities, for so I created him."</p>
@@ -771,15 +448,11 @@
     </div>
   </section>
 
-  <!-- UNIVERSAL RELIGION SECTION -->
+  <!-- UNIVERSAL RELIGION -->
   <section id="religion" class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Universal Religion &amp; Worship</h2>
-    </div>
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Universal Religion &amp; Worship</h2></div>
     <p>We see that world religions cannot exist together as a united whole. It would be better to re-establish the unity of the whole by adapting a syncretism of the best unbiased subjective truths and philosophical essences common to all religions, rather than a representation of each religion, without losing sight of their wisdom and experience, but rejecting those parts that are in conflict, contradictory, and cannot coexist together.</p>
     <p>There are elements of Pythagorean, Platonic, Gnostic, Stoic thought, with Chaldean and ancient Egyptian influence and Celtic symbolism. Since Jehovih is inconceivable and limitless, all discussion and interpretation of truth can only hope to reach a transient consensus.</p>
-
     <div class="scripture">
       <div class="scripture-label">Oahspe</div>
       <p>"I come to give a great religion, yet not to set aside the old; I come to such as do fulfil the old, and to give them the religion of the gods themselves."</p>
@@ -788,14 +461,10 @@
     </div>
   </section>
 
-  <!-- CHILDREN OF THE FUTURE -->
+  <!-- CHILDREN -->
   <section id="children" class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Children of the Future</h2>
-    </div>
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Children of the Future</h2></div>
     <p>If we are to have religion then it must have a purpose. This can be to drill us to act as a unit to carry out works of charity and harmony, love and righteousness. These can include the adoption of unwanted, abandoned, orphaned infants of all nations and races.</p>
-
     <div class="scripture">
       <div class="scripture-label">Oahspe</div>
       <p>"Feed, cloth and raise up these infants, not after any man's whim or conceit, but according to the accumulated wisdom collected from all the different nations and peoples in all the world, as to how to make the best corporeal and spiritual men and women."</p>
@@ -803,13 +472,9 @@
     </div>
   </section>
 
-  <!-- VISITORS & OWNERSHIP -->
+  <!-- VISITORS -->
   <section class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Visitors &amp; Ownership</h2>
-    </div>
-
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Visitors &amp; Ownership</h2></div>
     <div class="info-grid">
       <div class="info-card">
         <div class="info-card-title">Visitors Welcome</div>
@@ -820,7 +485,6 @@
         <p>No payment is required, save sharing what you will. Meat, tobacco, alcohol and drugs are not permitted. Vegan diet is encouraged. By these requests we hope to attract like-minded people.</p>
       </div>
     </div>
-
     <div class="scripture">
       <div class="scripture-label">Oahspe</div>
       <p>"Those who do good works for others and give love in return for hatred are Faithists. Whoever acts in this spirit shall be the authority and owners of the property, regardless of belief and financial standing, answerable only to Jehovih, who is above all."</p>
@@ -828,11 +492,8 @@
   </section>
 
   <!-- LINKS -->
-  <section class="section fade-in">
-    <div class="sec-head">
-      <div class="sec-diamond"></div>
-      <h2>Further Reading</h2>
-    </div>
+  <section class="section fade-in" style="padding-bottom: 48px;">
+    <div class="sec-head"><div class="sec-diamond"></div><h2>Further Reading</h2></div>
     <div class="links-grid">
       <a class="link-item" href="https://rrtech77.github.io/The-Galactic-Alignment/" target="_blank"><span class="link-dot"></span>The Galactic Alignment</a>
       <a class="link-item" href="https://rrtech77.github.io/Kosmon-Calendar/" target="_blank"><span class="link-dot"></span>Kosmon Calendar</a>
@@ -852,7 +513,7 @@
     <div class="footer-ornament">
       <div class="footer-line"></div>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <polygon points="10,2 18,17 2,17" stroke="#C4A25A" stroke-width="1" fill="none" opacity="0.6"/>
+        <polygon points="10,2 18,17 2,17" stroke="#D5B8E8" stroke-width="1" fill="none" opacity="0.6"/>
       </svg>
       <div class="footer-line"></div>
     </div>
@@ -863,7 +524,6 @@
 </div>
 
 <script>
-  // Scroll-triggered fade-in
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -871,10 +531,8 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
