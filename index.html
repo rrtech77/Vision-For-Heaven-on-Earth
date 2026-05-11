@@ -571,23 +571,21 @@
       </footer>
     </div>
     <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  // Reveal all fade-in elements immediately so page height is correct for all anchor links
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
 
-  // If page loaded with a hash, immediately make the target section visible
-  // so it renders at full height before the browser scrolls to it
-  if (window.location.hash) {
-    const target = document.querySelector(window.location.hash);
-    if (target) {
-      target.classList.add('visible');
+  // Scroll to hash after page fully loads
+  function scrollToHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) { target.scrollIntoView(); }
     }
+  }
+  if (document.readyState === 'complete') {
+    scrollToHash();
+  } else {
+    window.addEventListener('load', scrollToHash);
   }
 </script>
   </body>
